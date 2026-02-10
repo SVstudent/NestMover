@@ -43,13 +43,13 @@ Instead of browsing hundreds of generic results, you get a curated feed of place
 | **🏠 My Nest — Saved Places** | Save your favorite discoveries to "My Nest" — your personal collection of go-to spots in your new city |
 | **🔐 Google OAuth Authentication** | Secure sign-in with Google, with People API integration to auto-populate demographic data for better personalization |
 | **📂 Google Drive Integration** | Import your Google Maps Takeout data directly from Google Drive — no manual file downloads needed |
-| **⚡ Transparent AI** | Every recommendation includes a "Generated with Gemini" badge with a tooltip showing the exact prompt used — full explainability |
+| **⚡ Transparent AI** | Every recommendation includes a "Generated with Gemini 3" badge with a tooltip showing the exact prompt used — full explainability |
 
 ---
 
-## 🤖 How Gemini Powers NestMover
+## 🤖 How Gemini 3 Powers NestMover
 
-NestMover leverages **Gemini 3** (`gemini-2.0-flash`) as its core intelligence engine across two critical pipelines:
+NestMover leverages **Google's Gemini 3** as its core intelligence engine across two critical pipelines:
 
 ### Pipeline 1: Behavioral Profile Generation
 When a user uploads their Google Maps search history (exported via Google Takeout), Gemini 3 acts as a **data scientist** to:
@@ -70,10 +70,10 @@ When a user explores a category, Gemini 3 receives:
 Gemini 3 returns structured recommendations with `place`, `address`, `personalizedSummary`, `recommendationReasoning`, and `confidence` scores — all rendered as interactive cards with live Google Maps data.
 
 ### Why Gemini 3?
-- **Multimodal understanding**: Processes large, unstructured JSON data exports and extracts nuanced behavioral patterns
-- **Structured output generation**: Reliably produces complex, nested JSON schemas for downstream processing
-- **Contextual reasoning**: Generates human-readable explanations of *why* a specific place matches a specific user
-- **Speed**: `gemini-2.0-flash` enables real-time recommendation generation with sub-second response times
+- **Multimodal understanding**: Gemini 3 processes large, unstructured JSON data exports and extracts nuanced behavioral patterns that simpler models miss
+- **Structured output generation**: Gemini 3 reliably produces complex, nested JSON schemas for downstream processing — critical for our multi-step profiling pipeline
+- **Contextual reasoning**: Gemini 3 generates human-readable explanations of *why* a specific place matches a specific user, enabling true AI transparency
+- **Speed & efficiency**: Gemini 3's optimized inference enables real-time recommendation generation with sub-second response times, making the explore experience feel instant
 
 ---
 
@@ -99,7 +99,7 @@ graph TB
     end
 
     subgraph Google["Google Cloud APIs"]
-        GEMINI["Gemini 3<br/>(gemini-2.0-flash)"]
+        GEMINI["Gemini 3 AI"]
         MAPS[Google Maps JS API]
         PLACES[Google Places API]
         DIST[Distance Matrix API]
@@ -140,7 +140,7 @@ graph TB
 |-------|-----------|---------|
 | **Frontend** | React 18, TypeScript, Material UI | Responsive SPA with component library |
 | **Backend** | Flask, Python 3 | RESTful API server handling AI and map queries |
-| **AI Engine** | Gemini 3 (gemini-2.0-flash) | Profile generation, place recommendations, lifestyle analysis |
+| **AI Engine** | **Gemini 3** | Behavioral profile generation, personalized place recommendations, lifestyle analysis |
 | **Authentication** | Firebase Auth + Google OAuth | Secure user sign-in with Google accounts |
 | **Database** | Firebase Realtime Database | User profiles, preferences, and saved places |
 | **Maps & Places** | Google Maps JS, Places, Distance Matrix, Geocoding APIs | Location search, photos, distance/duration calculations |
@@ -160,13 +160,13 @@ NestMover/
 │   │   │   ├── onboarding/         # 5-step onboarding flow components
 │   │   │   ├── ExploreCard.tsx     # AI recommendation card with Maps integration
 │   │   │   ├── ExploreCategory.tsx # Category-based recommendation container
-│   │   │   ├── GenerateWithGemini.tsx # "Generated with Gemini" transparency badge
+│   │   │   ├── GenerateWithGemini.tsx # "Generated with Gemini 3" transparency badge
 │   │   │   ├── MapInfoCard.tsx     # Google Maps info overlay
 │   │   │   └── MyNestCard.tsx      # Saved places card
 │   │   ├── services/
 │   │   │   ├── ExploreService.ts           # AI recommendation API calls & prompt engineering
-│   │   │   ├── FullOnboardingProfileService.ts  # Multi-step Gemini profile generation
-│   │   │   ├── OnboardingProfileService.ts      # Single-pass Gemini profile generation
+│   │   │   ├── FullOnboardingProfileService.ts  # Multi-step Gemini 3 profile generation
+│   │   │   ├── OnboardingProfileService.ts      # Single-pass Gemini 3 profile generation
 │   │   │   └── UserProfileServices.ts           # Firebase user data operations
 │   │   ├── models/                 # TypeScript interfaces (User, Category, Transportation, etc.)
 │   │   ├── context/                # React auth context (Firebase)
@@ -177,8 +177,8 @@ NestMover/
 ├── server/                         # Flask + Python Backend
 │   ├── server.py                   # API router — 5 endpoints
 │   ├── scripts/
-│   │   ├── system_instructions.py          # Gemini content generation with retry logic
-│   │   ├── file_input_system_instructions.py  # Gemini file-based profile generation
+│   │   ├── system_instructions.py          # Gemini 3 content generation with retry logic
+│   │   ├── file_input_system_instructions.py  # Gemini 3 file-based profile generation
 │   │   ├── google_place_info_extractor.py     # Places API + Distance Matrix integration
 │   │   ├── google_drive_file_extractor.py     # Google Drive file download
 │   │   └── people_info_api_request.py         # People API user info
@@ -228,7 +228,7 @@ graph LR
 - **Node.js** (v16+) and **npm** for the client
 - **Python 3.9+** and **pip** for the server
 - A **Google Cloud Platform** project with the following APIs enabled:
-  - Gemini API (Generative Language API)
+  - **Gemini 3 API** (Generative Language API)
   - Google Maps JavaScript API
   - Google Places API
   - Distance Matrix API
@@ -313,6 +313,6 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ## 🙏 Acknowledgments
 
-- **Google** — for the Gemini API, Maps Platform, Firebase, and Cloud Run infrastructure that powers NestMover
+- **Google** — for the **Gemini 3 API**, Maps Platform, Firebase, and Cloud Run infrastructure that powers NestMover
 - **Material UI** — for the component library enabling a polished user experience
 - All open-source contributors whose libraries made this project possible
